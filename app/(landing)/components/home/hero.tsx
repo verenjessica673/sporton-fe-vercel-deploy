@@ -1,4 +1,4 @@
-import Button from ".../ui/button";
+import Button from "../ui/button";
 
 const HeroSection = () => {
   return (
@@ -31,3 +31,5 @@ const HeroSection = () => {
     </section>
   );
 };
+
+export default HeroSection;
