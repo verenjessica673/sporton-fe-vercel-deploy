@@ -1,5 +1,7 @@
 import priceFormat from '@/app/utils/price';
 import Image from 'next/image';
+import Button from './button';
+import { FiTrash2 } from "react-icons/fi";
 
 const cartList = [
     {
@@ -29,7 +31,7 @@ const cartList = [
 
 const CartPopup = () => {
     return (
-      <div className="absolute bg-white right-0 top-12 shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">
+      <div className="absolute bg-white right-0 top-15 shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">
         <div className="p-4 border-b border-gray-200 font-bold text-center">Shopping Cart</div>
 
       {cartList.map((item, index) => (
@@ -50,7 +52,14 @@ const CartPopup = () => {
                 <div className="text-primary">{priceFormat(item.price)}</div>
               </div>
           </div>
-        </div>
+            <Button
+              size="small"
+              variant="ghost"
+              className="w-7 h-7 p-0! self-center ml-auto"
+            >
+              <FiTrash2 />
+            </Button>
+          </div>    
       ))}
       </div>
   );
