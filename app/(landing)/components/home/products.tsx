@@ -7,7 +7,7 @@ const productList = [
     {
         name: "SportOn Product1",
         category: "Running",
-        price: 450000,
+        price: 119000,
         ImageUrl: "product-1.png",
     },
     {
@@ -25,7 +25,7 @@ const productList = [
         {
         name: "SportOn Product4",
         category: "Running",
-        price: 440000,
+        price: 485000,
         ImageUrl: "product-4.png",
     },
         {
@@ -70,7 +70,8 @@ const ProductsSection = () => {
               <div className="text-gray-500">{product.category}</div>
               <div className="font-medium text-primary">
                 {Intl.NumberFormat("id-ID", 
-                  {style: "currency", currency: "IDR", maximumSignificantDigits:3}).format(product.price)}
+                  {style: "currency", currency: "IDR", 
+                  maximumSignificantDigits:3}).format(product.price)}
               </div>
             </div>
           </Link>
