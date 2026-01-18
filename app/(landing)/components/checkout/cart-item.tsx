@@ -16,12 +16,11 @@ const CartItems = () => {
   );
 
     return (
-        <>
         <div className="bg-white">
             <div className="px-5 py-4 border-gray-200">
               <h2 className="font-bold text-lg">Cart Items</h2>
             </div>
-            <div className="overflow-auto"></div>
+            <div className="overflow-auto max-h-[300px]">
               {cartList.map((item, index) => (
                 <div key={index} className="flex gap-4 p-4 border-b border-gray-200">
                   <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
@@ -67,7 +66,7 @@ const CartItems = () => {
             Proceed to Payment
           </Button>
         </div>
-        </>
+        </div>
     );
 };
 

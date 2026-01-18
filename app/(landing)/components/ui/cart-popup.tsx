@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Button from './button';
 import { FiTrash2 } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export const cartList = [
     {
