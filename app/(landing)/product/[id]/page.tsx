@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ProductActions from "../../components/product-detail/product-action";
 import { getProductDetail } from "@/app/services/product.service";
-import { getimageUrl } from "@/app/lib/api";
+import { getImageUrl } from "@/app/lib/api";
 import priceFormat from "@/app/utils/price";
 
 type TPageProps = {
@@ -21,7 +21,7 @@ const ProductDetail = async ({params}:TPageProps) => {
     <main className="container mx-auto py-40 flex gap-12">
       <div className="bg-primary-light aspect-square min-w-140 flex justify-center items-center">
         <Image
-          src={getimageUrl(product.imageUrl)}
+          src={getImageUrl(product.imageUrl)}
           width={550}
           height={550}
           alt={product.name}
@@ -44,7 +44,7 @@ const ProductDetail = async ({params}:TPageProps) => {
         <div className="text-primary text-3xl font-semibold mb-12">
          {priceFormat(product.price)}
         </div>
-        <ProductActions stock={product.stock} />
+        <ProductActions product={product} stock={product.stock} />
       </div>    
     </main>
     );

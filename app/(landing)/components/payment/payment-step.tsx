@@ -6,9 +6,11 @@ import CardWithHeader from "../ui/card-with-header";
 import FileUpload from "../ui/file-upload";
 import Button from "../ui/button";
 import priceFormat from "@/app/utils/price";
+import {useState } from "react";
 
 const PaymentSteps = () => {
     const {push} = useRouter();
+    const [file, setFile] = useState<File | null>(null);
 
     const uploadAndConfirm = () => {
         push('/order-status/12345');
@@ -33,7 +35,7 @@ const PaymentSteps = () => {
             transaction.
           </li>
         </ol>
-        <FileUpload />
+        <FileUpload onFileSelect={setFile} />
       </div>
 
       <div className="border-t border-gray-200 p-4">

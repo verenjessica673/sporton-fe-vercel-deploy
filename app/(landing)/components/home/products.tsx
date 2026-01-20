@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FiPlus } from "react-icons/fi";
 import Button from "../ui/button";
 import { Product } from "@/app/types";
-import { getimageUrl } from "@/app/lib/api";
+import { getImageUrl } from "@/app/lib/api";
 import { useCartStore } from "@/app/hooks/use-cart-store";
 import priceFormat from "@/app/utils/price";
 
@@ -36,7 +36,7 @@ const ProductsSection = ({ products = [] } : TProductsProps) => {
             className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
             <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
               <Image
-                src={getimageUrl(product.imageUrl)}
+                src={getImageUrl(product.imageUrl)}
                 alt={product.name}
                 width={300}
                 height={300}

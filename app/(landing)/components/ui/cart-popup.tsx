@@ -5,7 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/app/hooks/use-cart-store';
-import { getimageUrl } from '@/app/lib/api';
+import { getImageUrl } from '@/app/lib/api';
 
 const CartPopup = () => {
   const {push} = useRouter();
@@ -30,7 +30,7 @@ const CartPopup = () => {
         <div key={index} className="flex gap-4 p-4 border-b border-gray-200">
           <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
             <Image
-              src={getimageUrl(item.imageUrl)}
+              src={getImageUrl(item.imageUrl)}
               width={63}
               height={63}
               alt={item.name}

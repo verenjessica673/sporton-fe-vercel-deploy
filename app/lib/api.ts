@@ -21,7 +21,7 @@ export async function fetchAPI<T>(
     return res.json();
 }
 
-export function getimageUrl(Path: string) {
+export function getImageUrl(Path: string) {
     if (Path.startsWith("http"))  return Path;
     return `${process.env.NEXT_PUBLIC_API_ROOT}/${Path}`;
 }

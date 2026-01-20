@@ -14,7 +14,7 @@ export default async function Home() {
     <main>
       <HeroSection />
       <CategoriesSection categories={categories} />
-      <ProductsSection product={products} />
+      <ProductsSection products={products} />
     </main>
   );
 }
