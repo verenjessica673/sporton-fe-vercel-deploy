@@ -11,15 +11,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 type TProductActionsProps = {
-  stock: number;
+  stock: number
 }
 
 const ProductActions = ({ stock }:TProductActionsProps) => {
   const { push } = useRouter();
   const [qty, setQty] = useState(1);
 
-  const checkout = () => {
-    push('/checkout');
+  const handleCheckout = () => {
+    push("/checkout");
   };
 
   return (

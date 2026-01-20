@@ -5,10 +5,19 @@ import Button from "../ui/button";
 import priceFormat from "@/app/utils/price";
 import { Product } from "@/app/types";
 import { getimageUrl } from "@/app/lib/api";
+import { useCartStore } from "@/app/hooks/use-cart-store";
 
 type TProductsProps = {
   product: Product []
-}
+};
+
+const ProductsSection = ({ products } : TProductsProps) => {
+  const {addItem} = useCartStore();
+
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.stopPropagation();
+    addItem(product)
+  }
 
 const ProductsSection = ({product}: TProductsProps) => {
   return (
@@ -31,7 +40,9 @@ const ProductsSection = ({product}: TProductsProps) => {
                 className="aspect-square object-contain"
               />
              
-              <Button className="w-10 h-10 p-2! absolute right-3 top-3"><FiPlus size={24} /></Button>
+              <Button className="w-10 h-10 p-2! absolute right-3 top-3" 
+              onClick={handleAddToCart(e)}>
+                <FiPlus size={24} /></Button>
 
             </div>
             <h3 className="font-medium text-lg mb-1.5 mt-4">{product.name}</h3>
