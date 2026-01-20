@@ -4,40 +4,19 @@ import Button from './button';
 import { FiTrash2 } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
 import { useRouter } from 'next/navigation';
-
-export const cartList = [
-    {
-        name: "SportOn Product2",
-        category: "Running",
-        qty: 1,
-        price: 250000,
-        ImageUrl: "product-2.png",
-    },
-
-        {
-        name: "SportOn Product4",
-        category: "Running",
-        qty: 2,
-        price: 485000,
-        ImageUrl: "product-4.png",
-    },
-
-        {
-        name: "SportOn Product6",
-        category: "Running",
-        qty: 2,
-        price: 650000,
-        ImageUrl: "product-6.png",
-    },
-];
+import { useCartStore } from '@/app/hooks/use-cart-store';
+import { getimageUrl } from '@/app/lib/api';
 
 const CartPopup = () => {
   const {push} = useRouter();
+  const {items, removeItem} = useCartStore();
 
-  const totalPrice = cartList.reduce(
+  const totalPrice = items.reduce(
     (total, item) => total + item.price * item.qty, 
     0
   );
+  
+  console.log("Cart Items:", items);
 
   const handleCheckout = () => {
     push("/checkout");
@@ -47,11 +26,11 @@ const CartPopup = () => {
       <div className="absolute bg-white right-0 top-15 shadow-xl shadow-black/10 border border-gray-200 w-90 z-10">
         <div className="p-4 border-b border-gray-200 font-bold text-center">Shopping Cart</div>
 
-      {cartList.map((item, index) => (
+      {items.map((item, index) => (
         <div key={index} className="flex gap-4 p-4 border-b border-gray-200">
           <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
             <Image
-              src={'/img/Product/' + item.ImageUrl}
+              src={getimageUrl(item.imageUrl)}
               width={63}
               height={63}
               alt={item.name}
@@ -69,6 +48,7 @@ const CartPopup = () => {
               size="small"
               variant="ghost"
               className="w-7 h-7 p-0! self-center ml-auto"
+              onClick={() => removeItem(item._id)}
             >
               <FiTrash2 />
             </Button>

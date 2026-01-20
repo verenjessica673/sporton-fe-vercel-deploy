@@ -1,16 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { cartList } from "../ui/cart-popup";
+import { CartItems } from "../ui/cart-popup";
 import priceFormat from "@/app/utils/price";
 import Button from "../ui/button";
 import { FiCreditCard, FiTrash2 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import { getimageUrl } from "@/app/lib/api";
 
 const CartItems = () => {
     const {push} = useRouter();
 
-    const totalPrice = cartList.reduce(
+    const totalPrice = CartItems.reduce(
     (total, item) => total + item.price * item.qty,
     0
   );
@@ -21,11 +22,11 @@ const CartItems = () => {
               <h2 className="font-bold text-lg">Cart Items</h2>
             </div>
             <div className="overflow-auto max-h-[300px]">
-              {cartList.map((item, index) => (
+              {CartItems.map((item, index) => (
                 <div key={index} className="flex gap-4 p-4 border-b border-gray-200">
                   <div className="bg-primary-light aspect-square w-16 flex justify-center items-center">
                     <Image
-                      src={'/img/Product/' + item.ImageUrl}
+                      src={getimageUrl(item.imageUrl)}
                       width={63}
                       height={63}
                       alt={item.name}
