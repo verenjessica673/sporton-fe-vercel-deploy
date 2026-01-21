@@ -4,11 +4,10 @@ import { getProductDetail } from "@/app/services/product.service";
 import { getImageUrl } from "@/app/lib/api";
 import priceFormat from "@/app/utils/price";
 
-type TPageProps = {
-    params: {
+export type TPageProps = {
+    params: Promise<{ id: string }>;
         id: string;
-    }
-}
+    };
 
 const ProductDetail = async ({params}:TPageProps) => {
   const {id} = await params;
