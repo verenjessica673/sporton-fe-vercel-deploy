@@ -18,7 +18,7 @@ const OrderInformation = ({formData, setFormData} : TOrderInformation) => {
       [e.target.name]: e.target.value
     });
   };
-
+  
   return (
     <CardWithHeader title="Order Information">
       <div className="p-5">
@@ -30,8 +30,7 @@ const OrderInformation = ({formData, setFormData} : TOrderInformation) => {
             id="customerName"
             name="customerName"
             value={formData.customerName}
-            onChange={handleInputChange}
-          />
+            />
         </div>
 
         <div className="input-group">
@@ -43,7 +42,7 @@ const OrderInformation = ({formData, setFormData} : TOrderInformation) => {
             name="customerContact"
             value={formData.customerContact ??""}
             onChange={handleInputChange}
-          />
+            />
         </div>
 
         <div className="input-group">
