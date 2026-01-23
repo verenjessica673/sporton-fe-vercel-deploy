@@ -3,6 +3,7 @@
 import Button from "@/app/(landing)/components/ui/button";
 import { FiPlus } from "react-icons/fi";
 import { useState } from "react";
+import ProductTable from "../../components/products/product-table";
 
 const ProductManagement = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +24,7 @@ const ProductManagement = () => {
           Add Product
         </Button>
       </div>
+        <ProductTable/>
     </div>
   );
 };
