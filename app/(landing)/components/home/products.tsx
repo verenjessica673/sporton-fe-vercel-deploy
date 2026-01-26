@@ -22,7 +22,6 @@ const ProductsSection = ({ products = [] } : TProductsProps) => {
     addItem(product)
   }
 
-
   return (
     <section id="products-section" className="container mx-auto mt-32 mb-52">
       <h2 className="font-bold italic text-4xl text-center mb-11">
@@ -50,7 +49,7 @@ const ProductsSection = ({ products = [] } : TProductsProps) => {
             </div>
             <h3 className="font-medium text-lg mb-1.5 mt-4">{product.name}</h3>
             <div className="flex justify-between mb-8">
-              <div className="text-gray-500">{product.category.name}</div>
+              <div className="text-gray-500">{product.category?.name}</div>
               <div className="font-medium text-primary">
                 {priceFormat(product.price)}
               </div>
