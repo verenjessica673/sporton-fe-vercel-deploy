@@ -1,3 +1,4 @@
+import { Product } from "@/app/types";
 import priceFormat from "@/app/utils/price";
 import Image from "next/image";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
@@ -26,7 +27,13 @@ const productData = [
   },
 ];
 
-const ProductTable = () => {
+type TProductTableProps = {
+    products: Product[];
+    onDelete?: (id: string) => void;
+   // onEdit?: (id: string) => void;
+}
+
+const ProductTable = ({products}:TProductTableProps) => {
     return (
         <div className="bg-white rounded-xl border border-gray-200">
             <table className="w-full text-left border-collapse">

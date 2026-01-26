@@ -5,10 +5,27 @@ import { FiPlus } from "react-icons/fi";
 import { useState } from "react";
 import ProductTable from "../../components/products/product-table";
 import ProductModal from "../../components/products/product-modal";
-
+import { Product } from "@/app/types";
+import { getAllProducts } from "@/app/services/product.service";
 
 const ProductManagement = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [product, setProducts] = useState<Product[]>([])
+
+  const fetchProducts = async () => {
+    try {
+      const data = await getAllProducts();
+      if (data) {
+        setProducts(data)
+      }
+    } catch(error) {
+      setIsOpen(False);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -26,7 +43,7 @@ const ProductManagement = () => {
           Add Product
         </Button>
       </div>
-        <ProductTable/>
+        <ProductTable products={products}/>
         <ProductModal isOpen={isOpen} onClose={handleCloseModal}/>
     </div>
   );

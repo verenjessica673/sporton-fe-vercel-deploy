@@ -25,3 +25,10 @@ export function getImageUrl(Path: string) {
     if (Path.startsWith("http"))  return Path;
     return `${process.env.NEXT_PUBLIC_API_ROOT}/${Path}`;
 }
+
+export function getAuthHeaders() {
+    const token = localStorage.getItem("token");
+    return {
+        Authorization: `Bearer ${token}`,
+    };
+}

@@ -1,37 +1,42 @@
 "use client";
 
 import Button from "@/app/(landing)/components/ui/button";
+import { login } from "@/app/services/auth.service";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const LoginPage = () => {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      router.push("/admin/products")
+      router.push("/admin/products");
     }
-  }, [router])
+  }, [router]);
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
-      const data = await login({email, password});
+      const data = await login({ email, password });
+
       if (data.token) {
-        router.push("/admin/products")
+        router.push("/admin/products");
       }
-    } catch(err: any) {
-      setErrorMessage(err.message || "Something went wrong, please try again later")
-      console.error("Login Error", err)
+    } catch (err: any) {
+      setErrorMessage(
+        err.message || "Something went wrong, please try again later.",
+      );
+      console.error("Login error", err);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <main className="bg-[#F7F9FA] w-full min-h-screen flex justify-center items-center">
@@ -48,8 +53,7 @@ const LoginPage = () => {
         </p>
 
         {errorMessage && (
-          <div className="px-3 py-1 bg-primary-light border
-            border-primary rounded-md text-primay text-sm text-center w-full mb-2">
+          <div className="px-3 py-1 bg-primary-light border border-primary rounded-md text-primary text-sm text-center w-full mb-2">
             {errorMessage}
           </div>
         )}
@@ -78,13 +82,8 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <Button
-          className="w-full rounded-lg! mb-8"
-          onClick={handleLogin}
-        > 
-          {
-            isLoading ? "Sign in ..." : "Sign in"
-          }
+        <Button className="w-full rounded-lg! mb-8" onClick={handleLogin}>
+          {isLoading ? "Signing in ..." : "Sign In"}
         </Button>
       </div>
     </main>
