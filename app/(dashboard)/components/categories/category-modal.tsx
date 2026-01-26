@@ -6,6 +6,7 @@ import { useState } from "react";
 type TCategoryModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  className?: string;
 };
 
 const CategoryModal = ({ isOpen, onClose }: TCategoryModalProps) => {
@@ -20,6 +21,7 @@ const CategoryModal = ({ isOpen, onClose }: TCategoryModalProps) => {
             <ImageUploadPreview
               label="Category Image"
               value={imagePreview}
+              className=""
               onChange={(file) => {
                 setImageFile(file);
                 setImagePreview(URL.createObjectURL(file));

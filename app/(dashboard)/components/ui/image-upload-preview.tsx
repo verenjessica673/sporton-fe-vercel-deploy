@@ -6,7 +6,7 @@ type TImageUploadPreviewProps = {
   label?: string;
   value?: string | null;
   onChange: (file: File) => void;
-  className: string;
+  className?: string;
 };
 
 const ImageUploadPreview = ({ label, value, onChange, className }: TImageUploadPreviewProps) => {
