@@ -1,20 +1,29 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const AuthGuard = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/admin/login");
-    } else {
+    if (pathname === "/admin/login") {
       setIsLoading(false);
+      return;
     }
-  }, [router]);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      router.replace("/admin/login");
+      return;
+    }
+
+    setIsLoading(false);
+
+  }, [router, pathname]);
 
   if (isLoading) {
     return (

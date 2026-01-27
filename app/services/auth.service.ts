@@ -3,9 +3,9 @@ import { LoginCredentials, LoginResponse } from "../types";
 
 export const login = async (credentials: LoginCredentials): Promise<LoginResponse> => {
     const res = await fetchAPI<LoginResponse>("/auth/signin",{
-        method: "POSH",
+        method: "POST",
         headers: {
-            "Content-type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(credentials),
     })
@@ -19,6 +19,6 @@ export const login = async (credentials: LoginCredentials): Promise<LoginRespons
 };
 
 export const logout = () => {
-        localStorage.removeItemItem("token");
-        localStorage.removeItemItem("user");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
 }
