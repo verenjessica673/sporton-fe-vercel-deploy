@@ -75,9 +75,19 @@ const BankInfoManagement = () => {
           Add Bank Account
         </Button>
       </div>
-      <BankInfoList banks={banks} onEdit={handleEdit} onDelete={handleDelete}/>
-      <BankInfoModal isOpen={isModalOpen} onClose={handleCloseModal} onSuccess={fetchBanks} bank={selectedBank}/>
-      <DeleteModal isOpen={isModalOpen} onClose={() => setIsDeleteModalOpen(false)} onConfirm={handlDeleteConfirm}/>
+      <BankInfoList banks={banks} onEdit={handleEdit} onDelete={handleDelete} />
+      <BankInfoModal
+        isOpen={isModalOpen}
+        onSuccess={fetchBanks}
+        onClose={handleCloseModal}
+        bank={selectedBank}
+      />
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handlDeleteConfirm}
+      />
+
     </div>
   );
 };

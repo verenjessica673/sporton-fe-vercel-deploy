@@ -123,9 +123,9 @@ const CategoryModal = ({ isOpen, onClose, onSuccess, category }: TCategoryModalP
               <label htmlFor="categoryName">Category Name</label>
               <input
                 type="text"
-                id="Name"
-                name="Name"
-                value= {formData.name}
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 placeholder="e. g. Running"
               />

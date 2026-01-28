@@ -99,6 +99,7 @@ const BankInfoModal = ({ isOpen, onClose, onSuccess, bank}: TBankInfoModalProps)
               id="bankName"
               name="bankName"
               placeholder="e. g. Mandiri, BCA, BRI"
+              onChange={handleChange}
             />
           </div>
           <div className="input-group-admin">
@@ -108,6 +109,7 @@ const BankInfoModal = ({ isOpen, onClose, onSuccess, bank}: TBankInfoModalProps)
               id="accountNumber"
               name="accountNumber"
               placeholder="123124344234234"
+              onChange={handleChange}
             />
           </div>
           <div className="input-group-admin">
@@ -117,6 +119,8 @@ const BankInfoModal = ({ isOpen, onClose, onSuccess, bank}: TBankInfoModalProps)
               id="accountName"
               name="accountName"
               placeholder="Holder Name as registered on the account"
+              value={formData.accountName}
+              onChange={handleChange}
             />
           </div>
         </div>
