@@ -1,13 +1,10 @@
 "use client";
 
 import TransactionTable from "../../components/transactions/transaction-table";
-import TransactiontModal from "../../components/transactions/transaction-modal";
+import TransactionModal from "../../components/transactions/transaction-modal";
 import { useEffect, useState } from "react";
 import { Transaction } from "@/app/types";
-import {
-  getAllTransactions,
-  updateTransaction,
-} from "@/app/services/transaction.service";
+import {getAllTransactions, updateTransaction,} from "@/app/services/transaction.service";
 import { toast } from "react-toastify";
 
 const TransactionManagement = () => {
@@ -73,7 +70,9 @@ const TransactionManagement = () => {
         transactions={transactions}
         onViewDetails={handleViewDetails}
       />
-      <TransactiontModal
+      <TransactionModal
+        transaction={selectedTransaction}
+        onStatusChange={handleStatusChange}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />

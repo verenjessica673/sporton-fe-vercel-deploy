@@ -7,7 +7,7 @@ type TCategoriesTableProps = {
   categories: Category[];
   onEdit: (categories: Category) => void;
   onDelete: (id: string) => void;
-}
+};
 
 const CategoryTable = ({categories, onEdit, onDelete}: TCategoriesTableProps) => {
   return (

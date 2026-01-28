@@ -7,7 +7,7 @@ import CategoryTable from "../../components/categories/category-table";
 import CategoryModal from "../../components/categories/category-modal";
 import { Category } from "@/app/types";
 import { deleteCategory, getAllCategories } from "@/app/services/category.service";
-import { toast } from "react-toastify/unstyled";
+import { toast } from "react-toastify";
 import DeleteModal from "../../components/ui/delete-modal";
 
 
@@ -21,9 +21,9 @@ const CategoryManagement = () => {
   const fetchCategories = async () => {
     try {
       const data = await getAllCategories();
-      setCategories(data)
+      setCategories(data);
     } catch(error) {
-      console.error("Failed to fetch categories", error)
+      console.error("Failed to fetch categories", error);
     }
   };
 

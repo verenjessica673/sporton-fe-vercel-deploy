@@ -39,7 +39,7 @@ const TransactionTable = ({ onViewDetails, transactions}: TTransactionTableProps
               className="border-b border-gray-200 last:border-b-0"
             >
               <td className="px-6 py-4 font-medium">
-                {new Date(transactions.createdAt).toLocaleDateString("id-ID", {
+                {new Date(data.createdAt).toLocaleDateString("id-ID", {
                   day: "numeric",
                   month: "short",
                   year: "numeric",
@@ -64,7 +64,7 @@ const TransactionTable = ({ onViewDetails, transactions}: TTransactionTableProps
               </td>
               <td className="px-6 py-7.5 flex items-center gap-3 text-gray-600">
                 <button
-                  onClick={onViewDetails}
+                  onClick={() => onViewDetails(data)}
                   className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 w-fit py-1 px-2 rounded-md"
                 >
                   <FiEye size={18} />

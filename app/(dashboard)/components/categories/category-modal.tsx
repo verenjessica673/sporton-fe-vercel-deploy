@@ -34,11 +34,13 @@ const CategoryModal = ({ isOpen, onClose, onSuccess, category }: TCategoryModalP
 
   useEffect(() => {
     if (isEditMode && isOpen) {
-      setFormData ({
+      setFormData({
         name: category.name,
         description: category.description,
-      })
-      setImagePreview(category.imageUrl ? getImageUrl(category.imageUrl) : null)
+      });
+      setImagePreview(
+        category.imageUrl ? getImageUrl(category.imageUrl) : null,
+      );
     } else if (isOpen) {
       setFormData({
         name: "",
@@ -47,7 +49,7 @@ const CategoryModal = ({ isOpen, onClose, onSuccess, category }: TCategoryModalP
       setImageFile(null);
       setImagePreview(null);
     }
-  },[category, isOpen])
+  }, [category, isOpen]);
 
   const handleChange = (
     e: React.ChangeEvent<
