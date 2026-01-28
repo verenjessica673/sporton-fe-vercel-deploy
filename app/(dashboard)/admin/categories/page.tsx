@@ -2,17 +2,18 @@
 
 import Button from "@/app/(landing)/components/ui/button";
 import { FiPlus } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CategoryTable from "../../components/categories/category-table";
 import CategoryModal from "../../components/categories/category-modal";
+import { Category } from "@/app/types";
 import { deleteCategory, getAllCategories } from "@/app/services/category.service";
+import { toast } from "react-toastify/unstyled";
+import DeleteModal from "../../components/ui/delete-modal";
 
 
 const CategoryManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null,
-  );
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [categoryToDeleteId, setCategoryToDeleteId] = useState("");
@@ -52,7 +53,12 @@ const CategoryManagement = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setSelectedCategory(null);
   };
+
+  useEffect(() => {
+    fetchCategories()
+  },[])
 
   return (
     <div>
@@ -66,8 +72,9 @@ const CategoryManagement = () => {
           Add Category
         </Button>
       </div>
-        <CategoryTable/>
-        <CategoryModal isModalOpen={isModalOpen} onClose={handleCloseModal}/>
+        <CategoryTable categories={categories} onDelete={handleDelete} onEdit={handleEdit} />
+        <CategoryModal category={selectedCategory} onSuccess={fetchCategories} isOpen={isModalOpen} onClose={handleCloseModal} />
+        <DeleteModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} onConfirm={handleDeleteConfirm} />
     </div>
   );
 };
